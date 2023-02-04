@@ -1,6 +1,6 @@
 <div>
     <span>HTML Code editor</span>
-    <button>Demo</button>
+    <button on:click >Demo</button>
 </div>
 
 <style>

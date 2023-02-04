@@ -1,5 +1,5 @@
 <script>
-    let value="Hello";
+   export let value="<strong>Type the HTML code here...</strong>";
 </script>
 
 <div class="parent">
@@ -23,11 +23,15 @@
    
     .child{
         height:400px;
-        width: 48%;
+        width: 46%;
         display: inline-block;
         vertical-align: middle;
         margin: 10px;
+        padding: 10px;
         overflow-wrap:break-word;
         background-color: white;
+    }
+    .left{
+        margin-left: 20px;
     }
 </style>
