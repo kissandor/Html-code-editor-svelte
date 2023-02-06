@@ -1,31 +1,52 @@
+<script lang="js">
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
+
+
+    /**
+	 * @param {string} msg
+	 */
+    function addHtmlTag(msg) {
+		dispatch(msg, {
+			text: '<' + msg + '>' + '</' + msg + '>'
+		});
+	}
+
+
+</script>
 <div class="ribbon"> 
-    <ul>
-        <li>h1</li>
-        <li>h2</li>
-        <li>h3</li>
-        <li>br</li> 
-        <li>div</li>
-        <li>ul</li>
-        <li>li</li>
-      </ul>
+    <!--change the below to button elements-->
+        <button on:click = {()=>
+        { 
+            dispatch('h1', {
+              text: '<h1></h1>'
+           })
+        }}>h1</button>
+        
+        <button on:click = {()=>addHtmlTag('h2')}>h2</button>
+        <button on:click = {()=>addHtmlTag("h3")}>h3</button>
+        <button on:click = {()=>addHtmlTag("br")}>br</button> 
+        <button on:click = {()=>addHtmlTag("div")}>div</button>
+        <button on:click = {()=>addHtmlTag("ul")}>ul</button>
+        <button on:click = {()=>addHtmlTag("li")}>li</button>
 </div>
 
 <style>
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
+    div {
       overflow: hidden;
       background-color: #914C53;
       color: white;
     }
     
-    li {
-      float: left;
-      padding: 7px 13px;
+    button {
+      background-color: #914C53;
+      border: none;
+      color: white;
+      font-size: medium;
+      padding : 5px 10px;
     }    
 
-    li:hover{
+    button:hover{
         background-color: #633035;
         cursor: pointer;
     }

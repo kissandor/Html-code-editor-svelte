@@ -1,5 +1,5 @@
 <div>
-    <span>HTML Code editor</span>
+    <span>HTML Code Editor</span>
     <button on:click >Demo</button>
 </div>
 
