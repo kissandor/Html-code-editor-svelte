@@ -1,16 +1,25 @@
 <script>
     import Ribbon from "./ribbon.svelte";
-    export let value="<strong><i>Type the HTML code here....</i></strong>";
-   
+    let value="";
+    export let inValue="";
+
+    $: {value = inValue;
+    console.log(value);}
+
     /**
 	 * @param {{ detail: { text: string; }; }} event
 	 */
     function handleMessage(event) {
-		value += event.detail.text;
+		inValue += event.detail.text;
 	}
 
-
-
+    /**
+	 * @param {{ detail: { text: string; }; }} event
+	 */
+    function clearTextArea(event) {
+        inValue = event.detail.text;
+        
+      }
 
 </script>
 
@@ -23,8 +32,9 @@
             on:br="{handleMessage}"
             on:div="{handleMessage}"
             on:ul="{handleMessage}"
-            on:li="{handleMessage}"/>
-        <textarea bind:value={value} ></textarea>
+            on:li="{handleMessage}"
+            on:clear = "{clearTextArea}"/>
+        <textarea bind:value={inValue} ></textarea>
     </div>
     <div class="right child">
         {@html (value)}  

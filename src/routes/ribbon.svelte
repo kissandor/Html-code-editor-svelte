@@ -29,6 +29,13 @@
         <button on:click = {()=>addHtmlTag("div")}>div</button>
         <button on:click = {()=>addHtmlTag("ul")}>ul</button>
         <button on:click = {()=>addHtmlTag("li")}>li</button>
+        
+        <button class="clear" on:click = {()=>
+        {
+            dispatch('clear',{
+              text: ''
+            })
+        }}>Clear</button>
 </div>
 
 <style>
@@ -49,6 +56,12 @@
     button:hover{
         background-color: #633035;
         cursor: pointer;
+    }
+
+    .clear{
+      float: right;
+      padding-right: 20px;
+      padding-left: 20px;
     }
 
 </style>
