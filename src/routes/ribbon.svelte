@@ -15,7 +15,6 @@
 
 </script>
 <div class="ribbon"> 
-    <!--change the below to button elements-->
         <button on:click = {()=>
         { 
             dispatch('h1', {
@@ -25,7 +24,12 @@
         
         <button on:click = {()=>addHtmlTag('h2')}>h2</button>
         <button on:click = {()=>addHtmlTag("h3")}>h3</button>
-        <button on:click = {()=>addHtmlTag("br")}>br</button> 
+        <button on:click = {()=>
+        {
+          dispatch('br', {
+              text: '</br>'
+           })
+        }}>br</button> 
         <button on:click = {()=>addHtmlTag("div")}>div</button>
         <button on:click = {()=>addHtmlTag("ul")}>ul</button>
         <button on:click = {()=>addHtmlTag("li")}>li</button>

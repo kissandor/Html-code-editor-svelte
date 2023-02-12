@@ -2,15 +2,21 @@
     import Ribbon from "./ribbon.svelte";
     let value="";
     export let inValue="";
+    let indexToInsert = 0;
 
-    $: {value = inValue;
-    console.log(value);}
+    $: {value = inValue;}
 
     /**
 	 * @param {{ detail: { text: string; }; }} event
 	 */
-    function handleMessage(event) {
-		inValue += event.detail.text;
+    function handleMessage(event) { 
+        if (inValue.length === 0 || indexToInsert === inValue.length){
+            inValue += event.detail.text;
+        } else {
+            let temp = inValue;
+            inValue = temp.slice(0,indexToInsert) + event.detail.text + temp.slice(indexToInsert);
+            indexToInsert += event.detail.text.length;
+        }
 	}
 
     /**
@@ -18,8 +24,18 @@
 	 */
     function clearTextArea(event) {
         inValue = event.detail.text;
-        
       }
+      
+    /**
+	 * @param {any} event
+	 */
+    function call(event){
+        console.log(indexToInsert);
+        indexToInsert = event.target.selectionStart
+        console.log(indexToInsert);
+    }
+
+
 
 </script>
 
@@ -34,7 +50,7 @@
             on:ul="{handleMessage}"
             on:li="{handleMessage}"
             on:clear = "{clearTextArea}"/>
-        <textarea bind:value={inValue} ></textarea>
+        <textarea  on:click={call} bind:value={inValue} ></textarea>
     </div>
     <div class="right child">
         {@html (value)}  
