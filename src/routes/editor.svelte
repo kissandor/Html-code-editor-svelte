@@ -1,6 +1,6 @@
 <script>
     import Ribbon from "./ribbon.svelte";
-    export let value="<strong><i>Type the HTML code here...</i></strong>";
+    export let value="<strong><i>Type the HTML code here....</i></strong>";
    
     /**
 	 * @param {{ detail: { text: string; }; }} event
